@@ -1,0 +1,306 @@
+GCD简介：
+http://blog.csdn.net/samuelltk/article/details/9452203
+
+iOS中多线程编程工具主要有：
+
+     NSThread
+    NSOperation
+    GCD
+
+这三种方法都简单易用,各有千秋.但无疑GCD是最有诱惑力的,因为其本身是apple为多核的并行运算提出的解决方案.虽然当前移动平台用双核的不多,但不影响GCD作为多线程编程的利器(ipad2已经是双核了,这无疑是一个趋势).
+
+http://www.cnblogs.com/scorpiozj/archive/2011/07/25/2116459.html
+
+GCD是和block紧密相连的,所以最好先了解下block(可以查看这里).GCD是C level的函数,这意味着它也提供了C的函数指针作为参数,方便了C程序员.
+
+一、下面首先来看GCD的使用:
+
+dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
+
+async表明异步运行,block代表的是你要做的事情,queue则是你把任务交给谁来处理了.(除了async,还有sync,delay,本文以async为例).
+
+之所以程序中会用到多线程是因为程序往往会需要读取数据,然后更新UI.为了良好的用户体验,读取数据的操作会倾向于在后台运行,这样以避免阻塞主线程.GCD里就有三种queue来处理.
+
+       先来介绍一下 Main queue：
+
+　　顾名思义,运行在主线程,由dispatch_get_main_queue获得.和ui相关的就要使用Main Queue.
+
+[cpp] view plaincopy
+
+    //GCD下载图片刷新主界面的例子  
+    /* 
+    - (IBAction)touchUpInsideByThreadOne:(id)sender { 
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{ 
+            NSURL * url = [NSURL URLWithString:@"http://avatar.csdn.net/2/C/D/1_totogo2010.jpg"]; 
+            NSData * data = [[NSData alloc]initWithContentsOfURL:url]; 
+            UIImage *image = [[UIImage alloc]initWithData:data]; 
+            if (data != nil) { 
+                dispatch_async(dispatch_get_main_queue(), ^{ 
+                    self.imageView.image = image; 
+                }); 
+            } 
+        }); 
+    }*/  
+
+
+ 通过与线程池的配合，dispatch queue分为下面两种：而系统默认就有一个串行队列main_queue和并行队列global_queue：
+
+         Serial Dispatch Queue -- 线程池只提供一个线程用来执行任务，所以后一个任务必须等到前一个任务执行结束才能开始。
+         Concurrent Dispatch Queue -- 线程池提供多个线程来执行任务，所以可以按序启动多个任务并发执行。
+
+而系统默认就有一个串行队列main_queue和并行队列global_queue：
+
+[cpp] view plaincopy
+
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);  
+    dispatch_queue_t mainQ = dispatch_get_main_queue();  
+
+通常，我们可以在global_queue中做一些long-running的任务，完成后在main_queue中更新UI，避免UI阻塞，无法响应用户操作：
+[cpp] view plaincopy
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{  
+            // long-running task  
+            dispatch_async(dispatch_get_main_queue(), ^{  
+                // update UI  
+            });  
+        });  
+
+
+
+1.Serial quque(private dispatch queue)
+
+　　每次运行一个任务,可以添加多个,执行次序FIFO. 通常是指程序员生成的,比如:
+
+NSDate *da = [NSDate date];
+NSString *daStr = [da description];
+const char *queueName = [daStr UTF8String];
+dispatch_queue_t myQueue = dispatch_queue_create(queueName, DISPATCH_QUEUE_PRIORITY_DEFAULT);
+
+下面还是下载图片例子：
+
+[cpp] view plaincopy
+
+    - (IBAction)touchUpInsideByThreadOne:(id)sender {  
+        NSDate *da = [NSDate date];  
+        NSString *daStr = [da description];  
+        const char *queueName = [daStr UTF8String];  
+        dispatch_queue_t myQueue = dispatch_queue_create(queueName, NULL);  
+          
+        dispatch_async(myQueue, ^{  
+            NSURL * url = [NSURL URLWithString:@"http://avatar.csdn.net/2/C/D/1_totogo2010.jpg"];  
+            NSData * data = [[NSData alloc]initWithContentsOfURL:url];  
+            UIImage *image = [[UIImage alloc]initWithData:data];  
+            if (data != nil) {  
+                dispatch_async(dispatch_get_main_queue(), ^{  
+                    self.imageView.image = image;  
+                });  
+            }  
+        });  
+          
+        dispatch_release(myQueue);  
+    }  
+
+为了验证Serial queue的FIFO特性，写了如下的验证代码：发现的确是顺序执行的。
+
+[cpp] view plaincopy
+
+    - (IBAction)touchUpInsideByThreadOne:(id)sender {  
+        NSDate *da = [NSDate date];  
+        NSString *daStr = [da description];  
+        const char *queueName = [daStr UTF8String];  
+        dispatch_queue_t myQueue = dispatch_queue_create(queueName, DISPATCH_QUEUE_SERIAL);  
+          
+        dispatch_async(myQueue, ^{  
+            [NSThread sleepForTimeInterval:6];  
+            NSLog(@"[NSThread sleepForTimeInterval:6];");  
+        });  
+          
+        dispatch_async(myQueue, ^{  
+            [NSThread sleepForTimeInterval:3];  
+            NSLog(@"[NSThread sleepForTimeInterval:3];");  
+        });  
+          
+        dispatch_async(myQueue, ^{  
+            [NSThread sleepForTimeInterval:1];  
+            NSLog(@"[NSThread sleepForTimeInterval:1];");  
+        });  
+          
+        dispatch_release(myQueue);  
+    }  
+
+运行结果为：
+
+[cpp] view plaincopy
+
+    2013-07-24 16:37:14.397 NSThreadAndBlockDemo[1924:12303] [NSThread sleepForTimeInterval:6];  
+    2013-07-24 16:37:17.399 NSThreadAndBlockDemo[1924:12303] [NSThread sleepForTimeInterval:3];  
+    2013-07-24 16:37:18.401 NSThreadAndBlockDemo[1924:12303] [NSThread sleepForTimeInterval:1];  
+
+
+3. Concurrent queue(global dispatch queue):
+
+可以同时运行多个任务,每个任务的启动时间是按照加入queue的顺序,结束的顺序依赖各自的任务.使用dispatch_get_global_queue获得.
+
+[cpp] view plaincopy
+
+    - (IBAction)touchUpInsideByThreadOne:(id)sender {  
+        dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);  
+          
+        dispatch_async(myQueue, ^{  
+            [NSThread sleepForTimeInterval:6];  
+            NSLog(@"[NSThread sleepForTimeInterval:6];");  
+        });  
+          
+        dispatch_async(myQueue, ^{  
+            [NSThread sleepForTimeInterval:3];  
+            NSLog(@"[NSThread sleepForTimeInterval:3];");  
+        });  
+          
+        dispatch_async(myQueue, ^{  
+            [NSThread sleepForTimeInterval:1];  
+            NSLog(@"[NSThread sleepForTimeInterval:1];");  
+        });  
+          
+        dispatch_release(myQueue);  
+    }  
+
+运行的结果为：
+
+[cpp] view plaincopy
+
+    2013-07-24 16:38:41.660 NSThreadAndBlockDemo[1944:12e03] [NSThread sleepForTimeInterval:1];  
+    2013-07-24 16:38:43.660 NSThreadAndBlockDemo[1944:12b03] [NSThread sleepForTimeInterval:3];  
+    2013-07-24 16:38:46.660 NSThreadAndBlockDemo[1944:12303] [NSThread sleepForTimeInterval:6];  
+
+
+二、dispatch_group_async的使用
+
+dispatch_group_async可以实现监听一组任务是否完成，完成后得到通知执行其他的操作。这个方法很有用，比如你执行三个下载任务，当三个任务都下载完成后你才通知界面说完成的了。下面是一段例子代码：
+
+[cpp] view plaincopy
+
+    - (IBAction)touchUpInsideByThreadOne:(id)sender {  
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);  
+        dispatch_group_t group = dispatch_group_create();  
+        dispatch_group_async(group, queue, ^{  
+            [NSThread sleepForTimeInterval:6];  
+            NSLog(@"group1 [NSThread sleepForTimeInterval:6];");  
+        });  
+        dispatch_group_async(group, queue, ^{  
+            [NSThread sleepForTimeInterval:3];  
+            NSLog(@"group2 [NSThread sleepForTimeInterval:3];");  
+        });  
+        dispatch_group_async(group, queue, ^{  
+            [NSThread sleepForTimeInterval:1];  
+            NSLog(@"group3 [NSThread sleepForTimeInterval:1];");  
+        });  
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{  
+            NSLog(@"main thread.");  
+        });  
+        dispatch_release(group);  
+    }  
+
+执行结果为：
+
+[cpp] view plaincopy
+
+    2013-07-24 16:48:23.063 NSThreadAndBlockDemo[2004:12e03] group3 [NSThread sleepForTimeInterval:1];  
+    2013-07-24 16:48:25.063 NSThreadAndBlockDemo[2004:12b03] group2 [NSThread sleepForTimeInterval:3];  
+    2013-07-24 16:48:28.063 NSThreadAndBlockDemo[2004:12303] group1 [NSThread sleepForTimeInterval:6];  
+    2013-07-24 16:48:28.065 NSThreadAndBlockDemo[2004:11303] main thread.  
+
+
+果然，dispatch_group_async只会监听最终的结果完成后，并通知main queue，那如果是我们需要顺序执行的话呢？请看下面的dispatch_barrier_async。
+
+3、dispatch_barrier_async的使用
+
+dispatch_barrier_async是在前面的任务执行结束后它才执行，而且它后面的任务等它执行完成之后才会执行
+
+例子代码如下：
+
+[cpp] view plaincopy
+
+    - (IBAction)touchUpInsideByThreadOne:(id)sender {  
+        dispatch_queue_t queue = dispatch_queue_create("gcdtest.rongfzh.yc", DISPATCH_QUEUE_CONCURRENT);  
+          
+        dispatch_async(queue, ^{  
+            [NSThread sleepForTimeInterval:3];  
+            NSLog(@"dispatch_async1");  
+        });  
+        dispatch_async(queue, ^{  
+            [NSThread sleepForTimeInterval:1];  
+            NSLog(@"dispatch_async2");  
+        });  
+        dispatch_barrier_async(queue, ^{  
+            NSLog(@"dispatch_barrier_async");  
+            [NSThread sleepForTimeInterval:0.5];  
+              
+        });  
+        dispatch_async(queue, ^{  
+            [NSThread sleepForTimeInterval:1];  
+            NSLog(@"dispatch_async3");  
+        });  
+    }  
+
+执行结果为：
+
+[cpp] view plaincopy
+
+    2013-07-24 17:01:54.580 NSThreadAndBlockDemo[2153:12b03] dispatch_async2  
+    2013-07-24 17:01:56.580 NSThreadAndBlockDemo[2153:12303] dispatch_async1  
+    2013-07-24 17:01:56.580 NSThreadAndBlockDemo[2153:12303] dispatch_barrier_async  
+    2013-07-24 17:01:58.083 NSThreadAndBlockDemo[2153:12303] dispatch_async3  
+
+如果使用dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);会发现运行结果为：
+
+[cpp] view plaincopy
+
+    2013-07-24 17:07:17.577 NSThreadAndBlockDemo[2247:12e03] dispatch_barrier_async  
+    2013-07-24 17:07:18.579 NSThreadAndBlockDemo[2247:15207] dispatch_async3  
+    2013-07-24 17:07:19.578 NSThreadAndBlockDemo[2247:12b03] dispatch_async2  
+    2013-07-24 17:07:20.577 NSThreadAndBlockDemo[2247:12303] dispatch_async1  
+
+
+说明dispatch_barrier_async的顺序执行还是依赖queue的类型啊，必需要queue的类型为dispatch_queue_create创建的，而且attr参数值必需是DISPATCH_QUEUE_CONCURRENT类型，前面两个非dispatch_barrier_async的类型的执行是依赖其本身的执行时间的，如果attr如果是DISPATCH_QUEUE_SERIAL时，那就完全是符合Serial queue的FIFO特征了。
+
+
+4、dispatch_apply
+
+执行某个代码片段N次。
+
+dispatch_apply(5, globalQ, ^(size_t index) {
+
+// 执行5次
+
+});
+
+5、dispatch_once
+
+     dispatch_once这个函数，它可以保证整个应用程序生命周期中某段代码只被执行一次！
+
+[cpp] view plaincopy
+
+    static dispatch_once_t onceToken;  
+        dispatch_once(&onceToken, ^{  
+            // code to be executed once  
+        });  
+
+6、dispatch_after
+
+有时候我们需要等个几秒钟然后做个动画或者给个提示，这时候可以用dispatch_after这个函数：
+[cpp] view plaincopy
+
+    double delayInSeconds = 2.0;  
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);  
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){  
+            // code to be executed on the main queue after delay  
+        });  
+
+7、dispatch_set_target_queue
+通过dispatch_set_target_queue函数可以设置一个dispatch queue的优先级，或者指定一个dispatch source相应的事件处理提交到哪个queue上。
+[cpp] view plaincopy
+
+    dispatch_set_target_queue(serialQ, globalQ);  
+
+
+由此可见,GCD的使用非常简单,以我的使用经验来看,以后会逐步淘汰使用NSOperation而改用GCD.

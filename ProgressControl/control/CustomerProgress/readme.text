@@ -1,0 +1,11 @@
+使用说明：
+1、xib方式：
+  1）在xib上拽一个view,class设为WAProgressView,关联到VC里
+  
+  2）在XIB 加载完成之后，比如viewDidLoad里 调用WAProgressView属性的set方法设置
+     相应地属性
+     
+2、纯代码：
+   
+   调用WAProgressView initWithFrame方法 初始化之后，调用属性的set方法设置
+  相应地属性

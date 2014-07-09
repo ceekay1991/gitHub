@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76543DBF196CCAA60036B095 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76543DBE196CCAA60036B095 /* Foundation.framework */; };
+		76543DC1196CCAA60036B095 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76543DC0196CCAA60036B095 /* CoreGraphics.framework */; };
+		76543DC3196CCAA60036B095 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76543DC2196CCAA60036B095 /* UIKit.framework */; };
+		76543DC9196CCAA60036B095 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76543DC7196CCAA60036B095 /* InfoPlist.strings */; };
+		76543DCB196CCAA60036B095 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76543DCA196CCAA60036B095 /* main.m */; };
+		76543DCF196CCAA60036B095 /* WAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76543DCE196CCAA60036B095 /* WAAppDelegate.m */; };
+		76543DD1196CCAA60036B095 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76543DD0196CCAA60036B095 /* Images.xcassets */; };
+		76543DD8196CCAA60036B095 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76543DD7196CCAA60036B095 /* XCTest.framework */; };
+		76543DD9196CCAA60036B095 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76543DBE196CCAA60036B095 /* Foundation.framework */; };
+		76543DDA196CCAA60036B095 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76543DC2196CCAA60036B095 /* UIKit.framework */; };
+		76543DE2196CCAA60036B095 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76543DE0196CCAA60036B095 /* InfoPlist.strings */; };
+		76543DE4196CCAA60036B095 /* ProgressControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76543DE3196CCAA60036B095 /* ProgressControlTests.m */; };
+		76543DF1196CCBDA0036B095 /* WAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76543DF0196CCBDA0036B095 /* WAProgressView.m */; };
+		76543DF5196CCBF60036B095 /* WATestProgressBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76543DF3196CCBF60036B095 /* WATestProgressBarViewController.m */; };
+		76543DF6196CCBF60036B095 /* WATestProgressBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76543DF4196CCBF60036B095 /* WATestProgressBarViewController.xib */; };
+		76543DF8196CED110036B095 /* readme.text in Resources */ = {isa = PBXBuildFile; fileRef = 76543DF7196CED110036B095 /* readme.text */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		76543DDB196CCAA60036B095 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76543DB3196CCAA60036B095 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76543DBA196CCAA60036B095;
+			remoteInfo = ProgressControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		76543DBB196CCAA60036B095 /* ProgressControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76543DBE196CCAA60036B095 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		76543DC0196CCAA60036B095 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		76543DC2196CCAA60036B095 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		76543DC6196CCAA60036B095 /* ProgressControl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProgressControl-Info.plist"; sourceTree = "<group>"; };
+		76543DC8196CCAA60036B095 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		76543DCA196CCAA60036B095 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		76543DCC196CCAA60036B095 /* ProgressControl-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProgressControl-Prefix.pch"; sourceTree = "<group>"; };
+		76543DCD196CCAA60036B095 /* WAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WAAppDelegate.h; sourceTree = "<group>"; };
+		76543DCE196CCAA60036B095 /* WAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WAAppDelegate.m; sourceTree = "<group>"; };
+		76543DD0196CCAA60036B095 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		76543DD6196CCAA60036B095 /* ProgressControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgressControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76543DD7196CCAA60036B095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		76543DDF196CCAA60036B095 /* ProgressControlTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProgressControlTests-Info.plist"; sourceTree = "<group>"; };
+		76543DE1196CCAA60036B095 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		76543DE3196CCAA60036B095 /* ProgressControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressControlTests.m; sourceTree = "<group>"; };
+		76543DEF196CCBDA0036B095 /* WAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAProgressView.h; sourceTree = "<group>"; };
+		76543DF0196CCBDA0036B095 /* WAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAProgressView.m; sourceTree = "<group>"; };
+		76543DF2196CCBF60036B095 /* WATestProgressBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATestProgressBarViewController.h; sourceTree = "<group>"; };
+		76543DF3196CCBF60036B095 /* WATestProgressBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WATestProgressBarViewController.m; sourceTree = "<group>"; };
+		76543DF4196CCBF60036B095 /* WATestProgressBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WATestProgressBarViewController.xib; sourceTree = "<group>"; };
+		76543DF7196CED110036B095 /* readme.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.text; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76543DB8196CCAA60036B095 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76543DC1196CCAA60036B095 /* CoreGraphics.framework in Frameworks */,
+				76543DC3196CCAA60036B095 /* UIKit.framework in Frameworks */,
+				76543DBF196CCAA60036B095 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76543DD3196CCAA60036B095 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76543DD8196CCAA60036B095 /* XCTest.framework in Frameworks */,
+				76543DDA196CCAA60036B095 /* UIKit.framework in Frameworks */,
+				76543DD9196CCAA60036B095 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76543DB2196CCAA60036B095 = {
+			isa = PBXGroup;
+			children = (
+				76543DED196CCBA90036B095 /* control */,
+				76543DC4196CCAA60036B095 /* ProgressControl */,
+				76543DDD196CCAA60036B095 /* ProgressControlTests */,
+				76543DBD196CCAA60036B095 /* Frameworks */,
+				76543DBC196CCAA60036B095 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		76543DBC196CCAA60036B095 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76543DBB196CCAA60036B095 /* ProgressControl.app */,
+				76543DD6196CCAA60036B095 /* ProgressControlTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76543DBD196CCAA60036B095 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76543DBE196CCAA60036B095 /* Foundation.framework */,
+				76543DC0196CCAA60036B095 /* CoreGraphics.framework */,
+				76543DC2196CCAA60036B095 /* UIKit.framework */,
+				76543DD7196CCAA60036B095 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76543DC4196CCAA60036B095 /* ProgressControl */ = {
+			isa = PBXGroup;
+			children = (
+				76543DCD196CCAA60036B095 /* WAAppDelegate.h */,
+				76543DCE196CCAA60036B095 /* WAAppDelegate.m */,
+				76543DD0196CCAA60036B095 /* Images.xcassets */,
+				76543DC5196CCAA60036B095 /* Supporting Files */,
+			);
+			path = ProgressControl;
+			sourceTree = "<group>";
+		};
+		76543DC5196CCAA60036B095 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76543DC6196CCAA60036B095 /* ProgressControl-Info.plist */,
+				76543DC7196CCAA60036B095 /* InfoPlist.strings */,
+				76543DCA196CCAA60036B095 /* main.m */,
+				76543DCC196CCAA60036B095 /* ProgressControl-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76543DDD196CCAA60036B095 /* ProgressControlTests */ = {
+			isa = PBXGroup;
+			children = (
+				76543DE3196CCAA60036B095 /* ProgressControlTests.m */,
+				76543DDE196CCAA60036B095 /* Supporting Files */,
+			);
+			path = ProgressControlTests;
+			sourceTree = "<group>";
+		};
+		76543DDE196CCAA60036B095 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76543DDF196CCAA60036B095 /* ProgressControlTests-Info.plist */,
+				76543DE0196CCAA60036B095 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76543DED196CCBA90036B095 /* control */ = {
+			isa = PBXGroup;
+			children = (
+				76543DEE196CCBA90036B095 /* CustomerProgress */,
+				76543DF2196CCBF60036B095 /* WATestProgressBarViewController.h */,
+				76543DF3196CCBF60036B095 /* WATestProgressBarViewController.m */,
+				76543DF4196CCBF60036B095 /* WATestProgressBarViewController.xib */,
+			);
+			path = control;
+			sourceTree = "<group>";
+		};
+		76543DEE196CCBA90036B095 /* CustomerProgress */ = {
+			isa = PBXGroup;
+			children = (
+				76543DEF196CCBDA0036B095 /* WAProgressView.h */,
+				76543DF0196CCBDA0036B095 /* WAProgressView.m */,
+				76543DF7196CED110036B095 /* readme.text */,
+			);
+			path = CustomerProgress;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		76543DBA196CCAA60036B095 /* ProgressControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76543DE7196CCAA60036B095 /* Build configuration list for PBXNativeTarget "ProgressControl" */;
+			buildPhases = (
+				76543DB7196CCAA60036B095 /* Sources */,
+				76543DB8196CCAA60036B095 /* Frameworks */,
+				76543DB9196CCAA60036B095 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProgressControl;
+			productName = ProgressControl;
+			productReference = 76543DBB196CCAA60036B095 /* ProgressControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+		76543DD5196CCAA60036B095 /* ProgressControlTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76543DEA196CCAA60036B095 /* Build configuration list for PBXNativeTarget "ProgressControlTests" */;
+			buildPhases = (
+				76543DD2196CCAA60036B095 /* Sources */,
+				76543DD3196CCAA60036B095 /* Frameworks */,
+				76543DD4196CCAA60036B095 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76543DDC196CCAA60036B095 /* PBXTargetDependency */,
+			);
+			name = ProgressControlTests;
+			productName = ProgressControlTests;
+			productReference = 76543DD6196CCAA60036B095 /* ProgressControlTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76543DB3196CCAA60036B095 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = yonyou;
+				TargetAttributes = {
+					76543DD5196CCAA60036B095 = {
+						TestTargetID = 76543DBA196CCAA60036B095;
+					};
+				};
+			};
+			buildConfigurationList = 76543DB6196CCAA60036B095 /* Build configuration list for PBXProject "ProgressControl" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 76543DB2196CCAA60036B095;
+			productRefGroup = 76543DBC196CCAA60036B095 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76543DBA196CCAA60036B095 /* ProgressControl */,
+				76543DD5196CCAA60036B095 /* ProgressControlTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76543DB9196CCAA60036B095 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76543DF8196CED110036B095 /* readme.text in Resources */,
+				76543DC9196CCAA60036B095 /* InfoPlist.strings in Resources */,
+				76543DF6196CCBF60036B095 /* WATestProgressBarViewController.xib in Resources */,
+				76543DD1196CCAA60036B095 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76543DD4196CCAA60036B095 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76543DE2196CCAA60036B095 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76543DB7196CCAA60036B095 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76543DF1196CCBDA0036B095 /* WAProgressView.m in Sources */,
+				76543DCF196CCAA60036B095 /* WAAppDelegate.m in Sources */,
+				76543DCB196CCAA60036B095 /* main.m in Sources */,
+				76543DF5196CCBF60036B095 /* WATestProgressBarViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76543DD2196CCAA60036B095 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76543DE4196CCAA60036B095 /* ProgressControlTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76543DDC196CCAA60036B095 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76543DBA196CCAA60036B095 /* ProgressControl */;
+			targetProxy = 76543DDB196CCAA60036B095 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		76543DC7196CCAA60036B095 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76543DC8196CCAA60036B095 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		76543DE0196CCAA60036B095 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76543DE1196CCAA60036B095 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		76543DE5196CCAA60036B095 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		76543DE6196CCAA60036B095 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		76543DE8196CCAA60036B095 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProgressControl/ProgressControl-Prefix.pch";
+				INFOPLIST_FILE = "ProgressControl/ProgressControl-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		76543DE9196CCAA60036B095 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProgressControl/ProgressControl-Prefix.pch";
+				INFOPLIST_FILE = "ProgressControl/ProgressControl-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		76543DEB196CCAA60036B095 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProgressControl.app/ProgressControl";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProgressControl/ProgressControl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ProgressControlTests/ProgressControlTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		76543DEC196CCAA60036B095 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProgressControl.app/ProgressControl";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProgressControl/ProgressControl-Prefix.pch";
+				INFOPLIST_FILE = "ProgressControlTests/ProgressControlTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76543DB6196CCAA60036B095 /* Build configuration list for PBXProject "ProgressControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76543DE5196CCAA60036B095 /* Debug */,
+				76543DE6196CCAA60036B095 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76543DE7196CCAA60036B095 /* Build configuration list for PBXNativeTarget "ProgressControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76543DE8196CCAA60036B095 /* Debug */,
+				76543DE9196CCAA60036B095 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		76543DEA196CCAA60036B095 /* Build configuration list for PBXNativeTarget "ProgressControlTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76543DEB196CCAA60036B095 /* Debug */,
+				76543DEC196CCAA60036B095 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76543DB3196CCAA60036B095 /* Project object */;
+}

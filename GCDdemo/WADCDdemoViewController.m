@@ -84,6 +84,8 @@
   
 
 }
+
+//多线程
 - (IBAction)touchUpInsideByGloableThreadOne:(id)sender
 {
   dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
